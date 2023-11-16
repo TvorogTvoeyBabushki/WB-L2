@@ -1,0 +1,15 @@
+.home {
+  display: flex;
+  gap: 60px;
+  padding: 40px 0;
+  flex-grow: 1;
+
+  @media (max-width: 860px) {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  @media (max-width: 680px) {
+    gap: 20px;
+  }
+}

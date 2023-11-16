@@ -1,0 +1,45 @@
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--accent-color);
+  position: relative;
+  cursor: pointer;
+
+  > input {
+    width: 20px;
+    height: 20px;
+    visibility: hidden;
+  }
+
+  &::before {
+    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &.active {
+    color: inherit;
+
+    &::before {
+      content: '✔';
+      border-color: var(--dark-accent-color);
+    }
+  }
+
+  &.bold {
+    font-weight: 700;
+    &::before {
+      border-width: 2px;
+    }
+  }
+}

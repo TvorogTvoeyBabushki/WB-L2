@@ -1,0 +1,116 @@
+.side_panel {
+  flex: 0 1 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  > nav {
+    > ul {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      > li {
+        > a {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: all 0.2s ease-in-out;
+          color: inherit;
+
+          &::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+
+          &:hover {
+            color: var(--accent-color);
+          }
+        }
+
+        &:nth-child(1) {
+          > a {
+            &::before {
+              background-color: var(--task-block-bg);
+            }
+          }
+        }
+        &:nth-child(2) {
+          > a {
+            &::before {
+              background-color: var(--light-purple-color);
+            }
+          }
+        }
+        &:nth-child(3) {
+          > a {
+            &::before {
+              background-color: var(--light-blue-color);
+            }
+          }
+        }
+        &:nth-child(4) {
+          > a {
+            &::before {
+              background-color: var(--pink-color);
+            }
+          }
+        }
+        &:nth-child(5) {
+          > a {
+            &::before {
+              background-color: var(--light-green-color);
+            }
+          }
+        }
+
+        &.active {
+          > a {
+            padding: 10px 20px;
+            background-color: var(--field-bg);
+            border-radius: 15px;
+            pointer-events: none;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  > div {
+    display: flex;
+    align-items: flex-end;
+    flex-grow: 1;
+  }
+
+  @media (max-width: 860px) {
+    gap: 20px;
+
+    > nav {
+      > ul {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        overflow: auto;
+        height: 80px;
+
+        > li {
+          > a {
+            transition: padding 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    > label {
+      width: max-content;
+    }
+
+    > div {
+      display: none;
+    }
+  }
+}
