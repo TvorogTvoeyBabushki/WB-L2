@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import './_reset.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --default-font: 'Open Sans', sans-serif;
+  --aqua-color: #39bcd4;
+  --blue-color: #3989d4;
+  --grey-color: #898989;
+  --light-grey-color: #dcdcdc;
+  --white-color: #fff;
+}
+
+body {
+  font: 400 normal 1rem/1.6 var(--default-font);
+}
+
+.tic-tac-toe {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.tic-tac-toe__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding: 20px 80px 40px;
+  border: 1px solid var(--aqua-color);
+  box-shadow: 0 0 3px var(--aqua-color);
+  width: 100%;
+  max-width: 600px;
+  max-height: 100%;
+  overflow: auto;
+  transition: padding 0.4s ease-in-out;
+
+  @media (max-width: 460px) {
+    padding: 20px 20px 40px;
+  }
+}
+
+.tic-tac-toe__statistics {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    text-align: center;
+    line-height: 1.2;
+  }
+}
+
+.tic-tac-toe__zero {
+  color: var(--aqua-color);
+
+  > div:first-child {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--white-color);
+    border: 5px solid var(--aqua-color);
+  }
+}
+
+.tic-tac-toe__cross {
+  color: var(--blue-color);
+
+  > div:first-child {
+    width: 30px;
+    height: 30px;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 100%;
+      height: 4px;
+      background-color: var(--blue-color);
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      top: 44%;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.tic-tac-toe__scales {
+  color: var(--grey-color);
+
+  > svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.tic-tac-toe__playing-field {
+  width: 100%;
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  justify-items: center;
+
+  > div {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--light-grey-color);
+    cursor: pointer;
+
+    &:nth-child(-1n + 3) {
+      border-top: 1px solid var(--white-color);
+    }
+
+    &:nth-child(n + 7) {
+      border-bottom: 1px solid var(--white-color);
+    }
+
+    &:nth-child(3n + 3) {
+      border-right: 1px solid var(--white-color);
+    }
+
+    &:nth-child(3n + 1) {
+      border-left: 1px solid var(--white-color);
+    }
+
+    .tic-tac-toe__cross-cell {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      animation: opacity 0.4s ease-in-out;
+
+      &::before,
+      &::after {
+        content: '';
+        width: 100%;
+        height: 4px;
+        background-color: var(--blue-color);
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 44%;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    .tic-tac-toe__zero-cell {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--white-color);
+      border: 5px solid var(--aqua-color);
+      animation: opacity 0.4s ease-in-out;
+    }
+  }
+}
+
+.tic-tac-toe__switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--light-grey-color);
+  border-radius: 30px;
+
+  width: 104px;
+  padding: 23px;
+  position: relative;
+
+  > div:first-child {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    left: 0px;
+
+    > div {
+      width: 48px;
+      height: 48px;
+      padding: 11px;
+      position: relative;
+      border-radius: 50%;
+      transition: all 0.2s ease-in-out;
+
+      &::before,
+      &::after {
+        content: '';
+        width: 50%;
+        height: 3px;
+        background-color: var(--blue-color);
+        border-radius: 2px;
+
+        position: absolute;
+        left: 24%;
+        top: 48%;
+        transition: all 0.2s ease-in-out;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    position: absolute;
+    right: 0px;
+    transition: all 0.2s ease-in-out;
+
+    > div {
+      width: 24px;
+      height: 24px;
+      border-radius: inherit;
+      background-color: var(--white-color);
+      border: 5px solid var(--aqua-color);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &.cross {
+    > div:first-child {
+      > div {
+        background-color: var(--aqua-color);
+
+        &::before,
+        &::after {
+          background-color: var(--white-color);
+        }
+      }
+    }
+  }
+
+  &.zero {
+    > div:last-child {
+      background-color: var(--aqua-color);
+      border-radius: 50%;
+
+      > div {
+        background-color: var(--aqua-color);
+        border-color: var(--white-color);
+      }
+    }
+  }
+}
+
+.tic-tac-toe__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .tic-tac-toe__restart {
+    width: max-content;
+    border-radius: 50%;
+    border: 1px solid var(--light-grey-color);
+    padding: 5px;
+    cursor: pointer;
+
+    > button:first-child {
+      padding: 10px;
+      width: 50px;
+      height: 50px;
+      background-color: #a4b5b8;
+      border-radius: inherit;
+      transition: all 0.2s ease-in-out;
+
+      > svg {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.4s ease-in-out;
+      }
+
+      &:hover {
+        background-color: var(--aqua-color);
+        color: var(--white-color);
+
+        > svg {
+          transform: rotate(270deg);
+        }
+      }
+    }
+  }
+
+  > button {
+    padding: 10px 20px;
+    border: 1px solid var(--light-grey-color);
+    border-radius: 30px;
+    font-weight: 700;
+    color: var(--grey-color);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--aqua-color);
+      color: var(--white-color);
+      border: 1px solid transparent;
+    }
+  }
+
+  > div:last-child {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
