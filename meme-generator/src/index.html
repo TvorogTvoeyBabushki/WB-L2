@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles/global.css" />
+
+    <title>Meme generator</title>
+  </head>
+  <body>
+    <main>
+      <section class="meme-generator">
+        <div class="meme-generator__wrapper">
+          <div class="meme-generator__image-wrapper">
+            <canvas id="canvas-image" width="500" height="500"></canvas>
+          </div>
+          <div class="meme-generator__toolbar-wrapper">
+            <label class="meme-generator__upload-image">
+              Загрузить изображение
+              <input type="file" id="upload-image" accept="image/*" />
+            </label>
+
+            <div class="meme-generator__toolbar">
+              <button class="meme-generator__add-text">Добавить текст</button>
+            </div>
+
+            <div>
+              <button class="meme-generator__download-image">
+                Скачать изображение
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>
